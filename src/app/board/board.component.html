@@ -1,0 +1,21 @@
+<div class="game-board">
+    <div class="board">
+        <div>
+            <square *ngFor="let square of squares | slice: 0 : 3; let i = index" [value]="square" (playerClick)="clickHandler(i)"></square>
+        </div>
+        <div>
+            <square *ngFor="let square of squares | slice: 3 : 6; let i = index" [value]="square" (playerClick)="clickHandler(i+3)"></square>
+        </div>
+        <div>
+            <square *ngFor="let square of squares | slice: 6; let i = index" [value]="square" (playerClick)="clickHandler(i+6)"></square>
+        </div>
+    </div>
+    <br/>
+    <div class="gameMsg">
+        <div *ngIf="winner !=='tie' && (winner==='X'|| winner=='O')">
+            winner is {{winner}}
+        </div>
+        <div *ngIf="winner ==='tie'">It's a tie</div>
+    </div>
+    <div class="game-btn" (click)="startGame()">startGame</div>
+</div>
